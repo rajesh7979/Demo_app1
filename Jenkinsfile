@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         GIT_REPO_NAME = 'Demo_app'
-        GITHUB_BRANCH = 'master'
+        GITHUB_BRANCH = 'main'
         GIT_USER_NAME = 'rajesh7979'
     }
     stages {
