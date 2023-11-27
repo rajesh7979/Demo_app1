@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage ('Checkout') {
             steps {
-                git credentialsId: 'github', url: 'https://github.com/rajesh7979/Demo_app.git'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/rajesh7979/Demo_app.git'
             }
         }
         stage ('Build') {
