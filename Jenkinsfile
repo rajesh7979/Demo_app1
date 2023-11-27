@@ -4,6 +4,7 @@ pipeline {
         GIT_REPO_NAME = 'Demo_app'
         GITHUB_BRANCH = 'main'
         GIT_USER_NAME = 'rajesh7979'
+        PATH = "$PATH:/usr/share/maven"
     }
     stages {
         stage ('Checkout') {
