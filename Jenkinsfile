@@ -17,6 +17,21 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+        stage('Upload'){
+            steps{
+                rtUpload (
+                 serverId:"jfrog-artifactory",
+                  spec: '''{
+                   "files": [
+                      {
+                      "pattern": "*.war",
+                      "target": "fis-demo-release"
+                      }
+                            ]
+                           }''',
+                        )
+            }
+        }
         stage ('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonarqube-demo') {
@@ -24,7 +39,7 @@ pipeline {
                 }
             }
         }   
-
+        
         stage ('Build docker image') {
             steps {
                 script {
