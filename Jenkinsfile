@@ -20,8 +20,8 @@ pipeline {
         stage ('Build docker image') {
             steps {
                 script {
-                    sh -s 'docker build -t fis-demo/app-image.${BUILD_ID}  .'
-                    sh -s 'docker images'
+                    sh 'sudo docker build -t fis-demo/app-image.${BUILD_ID}  .'
+                    sh 'sudo docker images'
                 }
             }
         }
