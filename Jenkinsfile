@@ -41,7 +41,7 @@ pipeline {
                       "files": [
                         {
                           "pattern": "*.app-image.${BUILD_ID}",
-                           "target": "demo_v1"
+                           "target": "fis-demo-release"
                         }
                     ]
                 }'''
