@@ -33,31 +33,17 @@ pipeline {
                 }
             }
           }
-        stage('Push artifacts into artifactory') {
-            steps {
-              rtUpload (
-                serverId: 'jfrog-artifactory',
-                spec: '''{
-                      "files": [
-                        {
-                          "pattern": "*.app-image.${BUILD_ID}",
-                           "target": "demo_v1"
-                        }
-                    ]
-                }'''
-              )
-            }
-        }
-    //Job Status check
-    post {
-        success {
+        
+ //Job Status check
+         post {
+          success {
             echo 'Build successfully!'
-        }
+           }
  
-        failure {
+         failure {
             echo 'Build Failed'
-        }
-    }
-}
-}
+         }
+     }
+ }
+
     
