@@ -32,19 +32,20 @@ pipeline {
                     sh 'sudo docker images'
                 }
             }
-          }
-        
- //Job Status check
-         post {
-          success {
+        }
+    }
+    //Job Status check
+    post {
+        success {
             echo 'Build successfully!'
-           }
- 
-         failure {
+        }
+
+        failure {
             echo 'Build Failed'
-         }
-     }
- }
-}    
+        }
+    }
+}
+
+    
 
     
