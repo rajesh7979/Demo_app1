@@ -25,7 +25,6 @@ pipeline {
             }
         }   
 
-
         stage ('Build docker image') {
             steps {
                 script {
@@ -34,8 +33,6 @@ pipeline {
                 }
             }
           }
-        
-        }
         stage('Push artifacts into artifactory') {
             steps {
               rtUpload (
