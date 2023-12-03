@@ -6,7 +6,7 @@ service:
         spec:
             manifests:
                 - manifest:
-                    identifier: guestbook
+                    identifier: javaapplication
                     type: K8sManifest
                     spec:
                       store:
@@ -15,10 +15,9 @@ service:
                             connectorRef: harnessgitconnector
                             gitFetchType: Branch
                             paths:
-                                - guestbook/guestbook-ui-deployment.yaml
-                                - guestbook/guestbook-ui-svc.yaml
-                            repoName: harnesscd-example-apps
+                                - harness-deploy/application/deployment.yaml
+                                - harness-deploy/application/service.yaml
+                            repoName: Demo_app1
                             branch: master
                         skipResourceVersioning: false
-                        enableDeclarativeRollback: false
-    gitOpsEnabled: false
+                        enable
