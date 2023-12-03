@@ -1,6 +1,6 @@
 service:
-    name: harness_javaapplicatiom
-    identifier: javaapplicatiom
+    name: harness_javaapplication
+    identifier: javaapplication
     serviceDefinition:
         type: Kubernetes
         spec:
