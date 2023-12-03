@@ -1,0 +1,15 @@
+infrastructureDefinition:
+  name: harness_k8sinfra
+  identifier: harnessk8sinfra
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  projectIdentifier: fisdemo
+  environmentRef: javadevenv
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: harnessk8sconnector
+    namespace: default
+    releaseName: release-<+INFRA_KEY>
+  allowSimultaneousDeployments: false
