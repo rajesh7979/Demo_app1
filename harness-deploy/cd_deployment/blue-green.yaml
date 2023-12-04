@@ -13,9 +13,9 @@ pipeline:
         spec:
           deploymentType: Kubernetes
           service:
-            serviceRef: javaapplicationdep
+            serviceRef: uhjjihjdep
           environment:
-            environmentRef: javadevenvdep
+            environmentRef: fisdemodevdep
             deployToAll: false
             infrastructureDefinitions:
               - identifier: harnessk8sinfradep
