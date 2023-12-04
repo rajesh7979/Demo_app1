@@ -1,6 +1,6 @@
 pipeline:
-  name: fis-demo2
-  identifier: fisdemo2
+  name: fis-demo-java
+  identifier: fisdemo
   projectIdentifier: fisdemo
   orgIdentifier: default
   tags: {}
@@ -11,7 +11,7 @@ pipeline:
         description: ""
         type: Deployment
         spec:
-          deploymentType: NativeHelm
+          deploymentType: Kubernetes
           service:
             serviceRef: fisdemodev
           environment:
