@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: tomcat
+  repository: reyesoft/hello-world
   pullPolicy: IfNotPresent
+  tag: latest
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -37,8 +37,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  port: 80
+  type: LoadBalancer
+  port: 8083
 
 ingress:
   enabled: false
