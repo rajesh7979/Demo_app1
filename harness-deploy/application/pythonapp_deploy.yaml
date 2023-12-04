@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-virtualization-deployment
+  labels:
+    app: hello-virtualization
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-virtualization-label
+  template:
+    metadata:
+      labels:
+        app: hello-virtualization-label
+    spec:
+      containers:
+      - name: hello-virtualization-container
+        image: docker.io/hello-virtualization:latest
+        ports:
+        - containerPort: 5000
