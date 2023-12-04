@@ -11,7 +11,7 @@ pipeline:
         description: ""
         type: Deployment
         spec:
-          deploymentType: Kubernetes
+          deploymentType: NativeHelm
           service:
             serviceRef: fisdemodev
           environment:
