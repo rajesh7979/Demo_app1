@@ -1,0 +1,53 @@
+pipeline:
+  name: fis-demo
+  identifier: fisdemo
+  projectIdentifier: fisdemo
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: deployed
+        identifier: deployed
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: fisdemodev
+          environment:
+            environmentRef: fisdemodev
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: kubernetesdeploy
+          execution:
+            steps:
+              - step:
+                  name: Stage Deployment
+                  identifier: stageDeployment
+                  type: K8sBlueGreenDeploy
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+                    pruningEnabled: false
+              - step:
+                  name: Swap primary with stage service
+                  identifier: bgSwapServices
+                  type: K8sBGSwapServices
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+            rollbackSteps:
+              - step:
+                  name: Swap primary with stage service
+                  identifier: rollbackBgSwapServices
+                  type: K8sBGSwapServices
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
