@@ -18,4 +18,4 @@ spec:
       - name: hello-virtualization-container
         image: docker.io/techno99/hello-virtualization:latest
         ports:
-        - containerPort: 5000
+        - containerPort: 80
