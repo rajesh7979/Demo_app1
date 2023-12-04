@@ -9,5 +9,6 @@ spec:
   - port: 5000
     targetPort: 5000
     protocol: TCP
+  type: LoadBalancer  
   selector:
     app: hello-virtualization-label
