@@ -51,3 +51,23 @@ pipeline:
                 - AllErrors
               action:
                 type: StageRollback
+  notificationRules:
+    - name: Teams-notification
+      identifier: Teamsnotification
+      pipelineEvents:
+        - type: PipelineSuccess
+        - type: PipelineFailed
+        - type: StageFailed
+          forStages:
+            - deployguestbook
+        - type: StageSuccess
+          forStages:
+            - deployguestbook
+      notificationMethod:
+        type: MsTeams
+        spec:
+          userGroups:
+            - account._account_all_users
+          msTeamKeys:
+            - https://slkgroup.webhook.office.com/webhookb2/c4c7884c-0a76-4784-aada-20eada41c4b3@01b695ba-6326-4daf-a9fc-629432404139/IncomingWebhook/89ef89f6d4874d44a1a54f8a19d193c1/18ec1fc8-c6fa-488a-8015-18445aaf9740
+      enabled: true
