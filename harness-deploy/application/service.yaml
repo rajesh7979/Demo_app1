@@ -7,7 +7,7 @@ spec:
     app: java-app
   ports:
   - protocol: TCP
-    port: 80
+    port: 8081
     targetPort: 8081
   type: LoadBalancer
   selector:
