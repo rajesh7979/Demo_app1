@@ -1,6 +1,6 @@
 pipeline:
-  name: fis-demo
-  identifier: fisdemo
+  name: fis-demo2
+  identifier: fisdemo2
   projectIdentifier: fisdemo
   orgIdentifier: default
   tags: {}
