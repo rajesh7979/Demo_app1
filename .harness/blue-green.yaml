@@ -12,13 +12,11 @@ pipeline:
         type: Deployment
         spec:
           deploymentType: Kubernetes
-          service:
-            serviceRef: fisdemodev
           environment:
-            environmentRef: fisdemodev
+            environmentRef: fisdemouat
             deployToAll: false
             infrastructureDefinitions:
-              - identifier: kubernetesdeploy
+              - identifier: Kubernates_uat
           execution:
             steps:
               - step:
@@ -44,6 +42,11 @@ pipeline:
                   timeout: 10m
                   spec:
                     skipDryRun: false
+          services:
+            values:
+              - serviceRef: fisdemodev
+            metadata:
+              parallel: false
         tags: {}
         failureStrategies:
           - onFailure:
