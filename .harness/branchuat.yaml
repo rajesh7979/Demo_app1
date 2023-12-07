@@ -1,5 +1,6 @@
 inputSet:
   name: branch-uat
+  tags: {}
   identifier: branchuat
   orgIdentifier: default
   projectIdentifier: fisdemo
@@ -12,6 +13,4 @@ inputSet:
           spec:
             environment:
               environmentRef: <+input>
-              environmentInputs: <+input>
-              serviceOverrideInputs: <+input>
               infrastructureDefinitions: <+input>
