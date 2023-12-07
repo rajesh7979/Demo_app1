@@ -42,14 +42,12 @@ pipeline:
               - serviceRef: fisdemodev
             metadata:
               parallel: false
-          environments:
-            metadata:
-              parallel: true
-            values:
-              - environmentRef: fisdemouat
-                deployToAll: false
-                infrastructureDefinitions:
-                  - identifier: Kubernates_uat
+          environment:
+            environmentRef: <+input>
+            deployToAll: false
+            environmentInputs: <+input>
+            serviceOverrideInputs: <+input>
+            infrastructureDefinitions: <+input>
         tags: {}
         failureStrategies:
           - onFailure:
