@@ -1,5 +1,6 @@
 inputSet:
-  name: branches
+  name: branch-dev
+  tags: {}
   identifier: branches
   orgIdentifier: default
   projectIdentifier: fisdemo
