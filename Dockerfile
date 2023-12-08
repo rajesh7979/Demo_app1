@@ -6,7 +6,7 @@ FROM openjdk:8-jdk-alpine
 WORKDIR /app
 
 # Copy the WAR file into the container at /app
-COPY ./target//webapp.war /app/webapp.war
+COPY ./target/webapp.war /app/webapp.war
 
 # Expose the port that your application will run on
 EXPOSE 80
