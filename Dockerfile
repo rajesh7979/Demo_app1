@@ -9,7 +9,7 @@ WORKDIR /app
 COPY ./webapp.war /app/webapp.war
 
 # Expose the port that your application will run on
-#EXPOSE 8080
+EXPOSE 80
 
 # Specify the command to run on container start
 CMD ["java", "-jar", "webapp.war"]
