@@ -27,6 +27,7 @@ pipeline {
         }
         stage ('Build') {
             steps {
+		sh 'sudo apt-get -y install mvn'    
                 sh 'mvn clean install'
                 sh 'cp ./webapp/target/*.war ./'
                 sh 'pwd'
