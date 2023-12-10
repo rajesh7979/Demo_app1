@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-      maven 'maven3'
+      maven 'MAVEN_HOME'
       jdk 'JDK8'
       jfrog 'cli'         
     }
@@ -26,8 +26,7 @@ pipeline {
             }
         }
         stage ('Build') {
-            steps {
-		sh 'sudo apt-get -y install mvn'    
+            steps {    
                 sh 'mvn clean install'
                 sh 'cp ./webapp/target/*.war ./'
                 sh 'pwd'
