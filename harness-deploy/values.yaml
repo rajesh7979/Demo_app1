@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: reyesoft/hello-world
+  repository: <+artifact.image>
   pullPolicy: IfNotPresent
   tag: latest
   # Overrides the image tag whose default is the chart appVersion.
