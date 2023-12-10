@@ -8,12 +8,14 @@ pipeline {
     environment {
         DOCKER_IMAGE_NAME = "slk.jfrog.io/fis-demo-dockerhub/app-image.${BUILD_ID}.${env.BUILD_NUMBER}"
         ARTIFACTORY_ACCESS_TOKEN = credentials('jf_access_token')
+        WEBHOOK_URL = credentials("webhook_url")
         BUILD_NAME = "${JOB_NAME}"
         BUILD_NO = "${env.BUILD_NUMBER}"
+       
     }
     options {
         office365ConnectorWebhooks([
-            [name: "Office 365", url: "https://slkgroup.webhook.office.com/webhookb2/c4c7884c-0a76-4784-aada-20eada41c4b3@01b695ba-6326-4daf-a9fc-629432404139/IncomingWebhook/8faad35f980342d3b12ed4d7f943ae08/18ec1fc8-c6fa-488a-8015-18445aaf9740", notifyBackToNormal: true, notifyFailure: true, notifyRepeatedFailure: true, notifySuccess: true, notifyAborted: true]
+            [name: "Office 365", Url: credentials("webhook_url"), notifyBackToNormal: true, notifyFailure: true, notifyRepeatedFailure: true, notifySuccess: true, notifyAborted: true]
         ])
       }
     stages {
@@ -93,18 +95,12 @@ pipeline {
           //      sh 'helm install my-trivy aquasecurity/trivy'
                sh 'trivy -h'
                sh 'mkdir -p reports'
-               sh 'pwd'
+               sh 'sudo apt-get -y install tree'
                sh 'trivy image $DOCKER_IMAGE_NAME  --output report.html || true'
+               sh 'tree'
+               sh 'ls -lrth'
               // publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'reports', reportFiles: 'index.html', reportName: 'Trivy Scan', reportTitles: 'Trivy Scan', useWrapperFileDirectly: true])
-               publishHTML target : [
-                    allowMissing: true,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'reports',
-                    reportFiles: 'report.html',
-                    reportName: 'Trivy Scan',
-                    reportTitles: 'Trivy Scan'
-                ] 
+              
 
             }
 		}    
@@ -135,7 +131,7 @@ pipeline {
         }*/
         stage('Notification') {
             steps {
-                office365ConnectorSend webhookUrl: "https://slkgroup.webhook.office.com/webhookb2/c4c7884c-0a76-4784-aada-20eada41c4b3@01b695ba-6326-4daf-a9fc-629432404139/IncomingWebhook/8faad35f980342d3b12ed4d7f943ae08/18ec1fc8-c6fa-488a-8015-18445aaf9740",
+                office365ConnectorSend webhookUrl: credentials("webhook_url"),
                 message: 'build is success',
                 status: 'Success'            
             }
@@ -145,13 +141,24 @@ pipeline {
     //Job Status check
     post {
         success {
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '.', reportFiles: 'report.html', reportName: 'Trivy Scan', reportTitles: 'Trivy Scan', useWrapperFileDirectly: true])
             echo 'Build successfully!'
+         //   office365ConnectorSend(
+          //  status: "Build Success",
+        //    webhookUrl: "$WEBHOOK_URL",
+         //   color: '00ff00',
+          //  message: "Success"
+        //    )      
         }
 
         failure {
+           // office365ConnectorSend(
+         //    status: "Build Failed",
+          //  webhookUrl: "$WEBHOOK_URL",
+        //    color: 'ff4000',
+          //  message: "The build has failed, please check build logs"
+        // )
             echo 'Build Failed'
         }
     }
 }
-
-
