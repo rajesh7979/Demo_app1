@@ -131,7 +131,7 @@ pipeline {
         }*/
         stage('Notification') {
             steps {
-                office365ConnectorSend webhookUrl: credentials("webhook_url"),
+                office365ConnectorSend webhookUrl: '$WEBHOOK_URL',
                 message: 'build is success',
                 status: 'Success'            
             }
