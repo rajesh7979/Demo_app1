@@ -145,7 +145,7 @@ pipeline {
             echo 'Build successfully!'
          //   office365ConnectorSend(
           //  status: "Build Success",
-        //    webhookUrl: "$WEBHOOK_URL",
+        //    webhookUrl: '$WEBHOOK_URL',
          //   color: '00ff00',
           //  message: "Success"
         //    )      
@@ -154,7 +154,7 @@ pipeline {
         failure {
            // office365ConnectorSend(
          //    status: "Build Failed",
-          //  webhookUrl: "$WEBHOOK_URL",
+          //  webhookUrl: '$WEBHOOK_URL',
         //    color: 'ff4000',
           //  message: "The build has failed, please check build logs"
         // )
@@ -162,5 +162,3 @@ pipeline {
         }
     }
 }
-
-
