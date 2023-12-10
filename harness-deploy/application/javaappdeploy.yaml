@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: javaapplication-ui
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: javaapplication-ui
+  template:
+    metadata:
+      labels:
+        app: javaapplication-ui
+    spec:
+      containers:
+      - image: docker.io/kuramoto/spring-boot-rest:latest
+        name: javaapplication-ui
+        ports:
+        - containerPort: 80
