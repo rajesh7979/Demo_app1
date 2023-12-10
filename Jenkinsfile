@@ -26,8 +26,7 @@ pipeline {
             }
         }
         stage ('Build') {
-            steps {    
-		sh 'sudo apt install maven'    
+            steps {        
                 sh 'mvn clean install'
                 sh 'cp ./webapp/target/*.war ./'
                 sh 'pwd'
