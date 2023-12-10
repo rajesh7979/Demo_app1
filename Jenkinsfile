@@ -11,6 +11,7 @@ pipeline {
         WEBHOOK_URL = credentials("webhook_url")
         BUILD_NAME = "${JOB_NAME}"
         BUILD_NO = "${env.BUILD_NUMBER}"
+	PATH = "$PATH:/usr/share/maven"
        
     }
     options {
