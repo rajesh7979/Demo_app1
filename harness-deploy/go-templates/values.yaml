@@ -2,7 +2,7 @@ name: <+stage.name>
 replicas: 2  
 image: slk.jfrog.io/fis-demo-dockerhub/app-image.76.76:latest
 # image: <+artifact.image>  
-# dockercfg: <+artifact.imagePullSecret>  
+dockercfg: <+artifact.imagePullSecret>  
   
 createNamespace: true  
 namespace: <+infra.namespace>  
