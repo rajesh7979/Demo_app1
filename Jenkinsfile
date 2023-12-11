@@ -104,7 +104,7 @@ pipeline {
 
             }
 		}    
-        stage('Scan and push image') {
+        stage('Push Docker image') {
 			steps {
 				dir('${WORKSPACE}') {
 					// Scan Docker image for vulnerabilities
