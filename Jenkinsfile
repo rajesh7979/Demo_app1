@@ -27,7 +27,7 @@ pipeline {
         stage ('Build') {
             steps {        
                 sh 'mvn clean install'
-                sh 'cp ./webapp/target/*.war ./'
+                sh 'cp ./target/*.jar ./'
                 sh 'pwd'
                 sh 'docker images'
             }
@@ -35,7 +35,7 @@ pipeline {
         stage('Push artifacts into artifactory') {
              steps {
                    sh 'curl -fL https://getcli.jfrog.io | sh'
-                   sh './jfrog rt u --url https://slk.jfrog.io/artifactory --access-token ${ARTIFACTORY_ACCESS_TOKEN} ./*.war  fis-demo-release/'
+                   sh './jfrog rt u --url https://slk.jfrog.io/artifactory --access-token ${ARTIFACTORY_ACCESS_TOKEN} ./*.jar  fis-demo-release/'
                    jf 'rt build-publish'
                  //  sh  './jfrog rt bp  --url https://slk.jfrog.io/artifactory --access-token ${ARTIFACTORY_ACCESS_TOKEN} ${JOB_NAME} ${BUILD_NUMBER}'
              }
