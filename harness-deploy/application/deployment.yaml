@@ -14,7 +14,7 @@ spec:
         app: javaapplication-ui
     spec:
       containers:
-      - image: docker.io/uwickch/petclinc:latest
+      - image: ikolaxis/petclinic:java11-openj9
         name: javaapplication-ui
         ports:
         - containerPort: 80
