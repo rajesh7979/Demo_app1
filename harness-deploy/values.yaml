@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: <+artifact.image>
+  repository: slk.jfrog.io/fis-demo-dockerhub/app-image.14.14:latest
   pullPolicy: IfNotPresent
   tag: latest
   # Overrides the image tag whose default is the chart appVersion.
