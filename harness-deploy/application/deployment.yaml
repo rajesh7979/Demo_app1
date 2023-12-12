@@ -14,7 +14,7 @@ spec:
         app: javaapplication-ui
     spec:
       containers:
-      - image: slk.jfrog.io/fis-demo-dockerhub/app-image.14.14:latest
+      - image: docker.io/uwickch/petclinc:latest
         name: javaapplication-ui
         ports:
         - containerPort: 80
