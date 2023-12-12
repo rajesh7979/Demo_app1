@@ -14,7 +14,7 @@ spec:
         app: javaapplication-ui
     spec:
       containers:
-      - image: docker.io/kuramoto/spring-boot-rest:latest
+      - image: fisdemo1.jfrog.io/fis-demo-dockerhub-docker-local/hello-world:latest
         name: javaapplication-ui
         ports:
         - containerPort: 80
