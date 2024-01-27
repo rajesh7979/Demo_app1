@@ -1,0 +1,16 @@
+inputSet:
+  name: branch-uat
+  tags: {}
+  identifier: branchuat
+  orgIdentifier: default
+  projectIdentifier: fisdemo
+  pipeline:
+    identifier: fisdemo
+    stages:
+      - stage:
+          identifier: deployed
+          type: Deployment
+          spec:
+            environment:
+              environmentRef: <+input>
+              infrastructureDefinitions: <+input>

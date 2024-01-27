@@ -5,7 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: reyesoft/hello-world
+#  repository: slk.jfrog.io/fis-demo-dockerhub/app-image.14.14:latest
+  repository: docker.io/vasusav/ekart1-docker:latest
   pullPolicy: IfNotPresent
   tag: latest
   # Overrides the image tag whose default is the chart appVersion.
